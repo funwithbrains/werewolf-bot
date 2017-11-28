@@ -4,23 +4,18 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 import { Players } from '/imports/api/index';
 
-class PlayersComponent extends Component {
-  render() {
-    return (
-      <div>
-        { this.props.user ?
-          <ul>
-            {this.props.players.map(player => {
-              return <li key={player._id}>
-                {player.name}
-              </li>;
-            })}
-          </ul> : ''
-        }
-      </div>
-    );
+const PlayersComponent = ({ user, players }) => <div>
+  <h3>Players</h3>
+  { user ?
+    <ul>
+      {players.map(player => {
+        return <li key={player._id}>
+          {player.name}
+        </li>;
+      })}
+    </ul> : ''
   }
-}
+</div>;
 
 PlayersComponent.propTypes = {
   players: PropTypes.array.isRequired,
