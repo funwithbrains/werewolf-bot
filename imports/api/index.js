@@ -1,9 +1,11 @@
-import { Players } from './players';
 import { Abilities } from './abilities';
 import { Games } from './games';
+import { Players } from './players';
+import { Roles } from './roles';
 
 export {
-  Players,
   Abilities,
-  Games
+  Games,
+  Players,
+  Roles
 };
