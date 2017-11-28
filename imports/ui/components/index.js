@@ -1,5 +1,7 @@
 import AccountUI from './accountUI';
+import Form from './form';
 
 export {
-  AccountUI
+  AccountUI,
+  Form
 };
