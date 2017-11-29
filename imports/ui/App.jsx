@@ -26,8 +26,8 @@ export default () => <Router>
     </ul>
 
     <Route exact path="/" component={Home}/>
-    <Route exact path="/players" component={Players} />
-    <Route exact path="/roles" component={Roles} />
-    <Route exact path="/setup" component={Setup} />
+    <Route path="/players" component={Players} />
+    <Route path="/roles" component={Roles} />
+    <Route path="/setup" component={Setup} />
   </div>
 </Router>;
