@@ -6,5 +6,14 @@ import { Roles } from '/imports/api/index';
 export default () => <div>
   <h3>Creating a Role</h3>
 
-  <Form formDefinition={Roles.formDefinition} />
+  <Form formDefinition={{
+    fields: [
+      { key: 'name', type: 'text' },
+      { key: 'description', type: 'longText' },
+      { key: 'tags', type: 'text' }
+    ],
+    save: (role) => {
+      Roles.insert(role);
+    }
+  }} />
 </div>;

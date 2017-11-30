@@ -9,5 +9,8 @@ export default () => <div>
 
   <Link to="/roles/create">Create a Role</Link>
 
-  <Table collection={Roles} definition={Roles.tableDefinition} />
+  <Table link="/roles/update/:id" collection={Roles} definition={{
+    query: {},
+    columns: [{ label: 'Name', key: 'name', isLink: true }]
+  }} />
 </div>;
