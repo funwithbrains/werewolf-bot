@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 export default withTracker(({ collection, query }) => {
   return {
-    values: collection.find({}).fetch()
+    values: collection.find(query).fetch()
   };
 })(class extends Component {
   render() {
-    const { values, link, definition: { columns } } = this.props;
+    const { values, link, columns } = this.props;
     
     return <table>
       <thead>
