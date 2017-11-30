@@ -6,6 +6,22 @@ const fieldTypeMap = Object.freeze({
 });
 
 export default class extends Component {
+  componentDidMount() {
+    this.updateInputValues(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.updateInputValues(nextProps);
+  }
+
+  updateInputValues({ value }) {
+    if (!value) { return; }
+
+    Object.keys(this.refs).forEach(key => {
+      this.refs[key].value = value[key];
+    });
+  }
+
   save() {
     const { formDefinition } = this.props;
 
