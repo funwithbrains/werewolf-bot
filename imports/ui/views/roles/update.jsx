@@ -11,14 +11,11 @@ export default withTracker(({ match: { params: { id } } }) => {
 })(({ role }) => <div>
   <h3>Updating a Role</h3>
 
-  <Form value={role} formDefinition={{
-    fields: [
-      { key: 'name', type: 'text' },
-      { key: 'description', type: 'longText' },
-      { key: 'tags', type: 'text' }
-    ],
-    save: (newRole) => {
-      Roles.update(role._id, newRole);
-    }
+  <Form value={role} fields={[
+    { key: 'name', type: 'text' },
+    { key: 'description', type: 'longText' },
+    { key: 'tags', type: 'text' }
+  ]} handleSave={newRole => {
+    Roles.update(role._id, newRole);
   }} />
 </div>);

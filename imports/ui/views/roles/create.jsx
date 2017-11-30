@@ -6,14 +6,11 @@ import { Roles } from '/imports/api/index';
 export default () => <div>
   <h3>Creating a Role</h3>
 
-  <Form formDefinition={{
-    fields: [
-      { key: 'name', type: 'text' },
-      { key: 'description', type: 'longText' },
-      { key: 'tags', type: 'text' }
-    ],
-    save: (role) => {
-      Roles.insert(role);
-    }
+  <Form fields={[
+    { key: 'name', type: 'text' },
+    { key: 'description', type: 'longText' },
+    { key: 'tags', type: 'text' }
+  ]} handleSave={newRole => {
+    Roles.insert(newRole);
   }} />
 </div>;

@@ -23,21 +23,21 @@ export default class extends Component {
   }
 
   save() {
-    const { formDefinition } = this.props;
+    const { handleSave } = this.props;
 
     const value = Object.keys(this.refs).reduce((memo, key) => {
       memo[key] = this.refs[key].value;
       return memo;
     }, {});
 
-    formDefinition.save(value);
+    handleSave(value);
   }
 
   render() {
-    const { formDefinition } = this.props;
+    const { fields } = this.props;
     
     return <div>
-      {formDefinition.fields.map(field => <div key={field.key}>
+      {fields.map(field => <div key={field.key}>
         <label>{field.label || field.key}</label> {fieldTypeMap[field.type](field.key)}
       </div>)}
       <button onClick={() => this.save()}>Save</button>
