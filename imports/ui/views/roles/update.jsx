@@ -1,14 +1,15 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { withRouter } from 'react-router-dom'
 
 import { Form } from '/imports/ui/components/index';
 import { Roles } from '/imports/api/index';
 
-export default withTracker(({ match: { params: { id } } }) => {
+export default withRouter(withTracker(({ match: { params: { id } } }) => {
   return {
     role: Roles.findOne(id)
   };
-})(({ role }) => <div>
+})(({ history, role }) => <div>
   <h3>Updating a Role</h3>
 
   <Form value={role} fields={[
@@ -18,4 +19,9 @@ export default withTracker(({ match: { params: { id } } }) => {
   ]} handleSave={newRole => {
     Roles.update(role._id, newRole);
   }} />
-</div>);
+
+  <button onClick={() => {
+    Roles.remove(role._id);
+    history.replace('..');
+  }}>Delete this Role</button>
+</div>));
