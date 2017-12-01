@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withTracker } from 'meteor/react-meteor-data';
 
 import { Players } from '/imports/api/index';
+import { CRUD } from '/imports/ui/components/index';
 
-const PlayersComponent = ({ user, players }) => <div>
-  <h3>Players</h3>
-  { user ?
-    <ul>
-      {players.map(player => {
-        return <li key={player._id}>
-          {player.name}
-        </li>;
-      })}
-    </ul> : ''
-  }
+export default () => <div>
+  <CRUD
+    basePath="/players"
+    nameSingular="Player"
+    namePlural="Players"
+    collection={Players}
+    listColumns={[
+      { label: 'Name', key: 'name', isLink: true }
+    ]}
+    formFields={[
+      { key: 'name', type: 'text' }
+    ]}
+  />
 </div>;
-
-PlayersComponent.propTypes = {
-  players: PropTypes.array.isRequired,
-  user: PropTypes.object
-};
-
-export default withTracker(() => {
-  return {
-    players: Players.find({}).fetch(),
-    user: Meteor.user()
-  };
-})(PlayersComponent);
