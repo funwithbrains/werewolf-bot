@@ -5,8 +5,10 @@ import { render } from 'react-dom';
 import App from '/imports/ui/app.jsx';
 
 import api from '/imports/api/index';
+
+import utils from '/imports/utils/index';
 window.dev = { // TEMP
-  React, Meteor, api
+  React, Meteor, api, utils
 };
 
 Meteor.startup(() => {
