@@ -4,6 +4,7 @@ export const Games = new Mongo.Collection('games');
 
 Games.stateKey = {
   pending: 'pending',
+  completed: 'completed',
   day: 'day',
   night: 'night'
 };
