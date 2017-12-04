@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
+import { DateTime } from '/imports/ui/components/input/index';
+
+const missingComponent = () => <div>Missing Component</div>;
+
 const fieldTypeMap = Object.freeze({
   'text': key => <input ref={key} type="text" />,
-  'longText': key => <textarea ref={key}></textarea>
+  'longText': key => <textarea ref={key}></textarea>,
+  'dateTime': key => <DateTime ref={key} />
 });
 
 export default class extends Component {
@@ -38,7 +43,9 @@ export default class extends Component {
     
     return <div>
       {fields.map(field => <div key={field.key}>
-        <label>{field.label || field.key}</label> {fieldTypeMap[field.type](field.key)}
+        <label>{field.label || field.key}</label> {
+          (fieldTypeMap[field.type] || missingComponent)(field.key)
+        }
       </div>)}
       <button onClick={() => this.save()}>Save</button>
     </div>;
