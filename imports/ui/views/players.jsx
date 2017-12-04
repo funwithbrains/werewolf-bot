@@ -15,5 +15,6 @@ export default () => <div>
     formFields={[
       { key: 'name', type: 'text' }
     ]}
+    computeFormValue={formData => formData}
   />
 </div>;
