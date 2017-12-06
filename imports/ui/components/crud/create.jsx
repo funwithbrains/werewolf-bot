@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 
-import { Form } from '/imports/ui/components/index';
+export default withRouter(class extends Component {
+  constructor (props) {
+    super(props);
 
-export default ({
-  crudProps: { collection, computeFormValue, formFields, nameSingular }
-}) => <div>
-  <h3>Creating a {nameSingular}</h3>
+    const {
+      history,
+      crudProps: { collection, basePath }
+    } = props;
 
-  <Form fields={formFields} handleSave={formData => {
-    collection.insert(computeFormValue(formData));
-  }} />
-</div>;
+    const newId = collection.insert({});
+    history.replace(`${basePath}/update/${newId}`);
+  }
+  render() { return null; }
+});

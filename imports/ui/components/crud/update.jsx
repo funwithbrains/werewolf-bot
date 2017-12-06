@@ -13,16 +13,23 @@ export default withRouter(withTracker(({
 })(({
   history,
   value,
-  crudProps: { collection, formFields, computeFormValue, nameSingular }
+  crudProps: {
+    collection,
+    formFields, computeFormValue,
+    nameSingular,
+    basePath
+  }
 }) => <div>
   <h3>Updating a {nameSingular}</h3>
 
-  <Form value={value} fields={formFields} handleSave={formData => {
-    collection.update(value._id, computeFormValue(formData));
+  <Form value={value} fields={formFields} onChange={(k, v) => {
+    collection.update(value._id, {
+      $set: { [k]: v }
+    });
   }} />
 
   <button onClick={() => {
     collection.remove(value._id);
-    history.replace('..');
+    history.replace(basePath);
   }}>Delete this {nameSingular}</button>
 </div>));
