@@ -9,16 +9,17 @@ export default withTracker(({ collection }) => {
   value,
   options,
   getLabel,
-  getValue,
   onChange
 }) => {
+  const compareObjects = (a, b) => getLabel(a).localeCompare(getLabel(b));
+
   return <select
     value={value}
     onChange={e => onChange(e.target.value)}
   >
-    {options.sort(String.compareStrings).map(v => <option
+    {options.sort(compareObjects).map(v => <option
       key={v._id}
-      value={getValue(v)}
+      value={v._id}
     >
       {getLabel(v)}
     </option>)}

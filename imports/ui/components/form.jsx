@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {
   DateTime,
   Input,
+  ObjectMultiSelector,
   ObjectSelector
 } from '/imports/ui/components/input/index';
 
@@ -35,6 +36,15 @@ const FormInput = ({ field, value, onChange }) => {
     />
   }
 
+  if (type === 'objectMultiSelector') {
+    return <ObjectMultiSelector
+      value={value}
+      getLabel={field.getLabel}
+      collection={field.collection}
+      onChange={onChange}
+    />
+  }
+
   return <Input
     value={value}
     onChange={onChange}
@@ -48,7 +58,7 @@ export default class extends Component {
 
     return <div>
       {fields.map(field => <div key={field.key}>
-        <label>{field.label || field.key}</label>
+        <label>{field.label || field.key} </label>
         <span>
           <FormInput
             field={field}
