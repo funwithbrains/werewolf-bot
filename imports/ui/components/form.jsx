@@ -1,17 +1,45 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 
-import { DateTime, Input } from '/imports/ui/components/input/index';
+import {
+  DateTime,
+  Input,
+  ObjectSelector
+} from '/imports/ui/components/input/index';
 
-const FormInput = ({ type, value, onChange }) => {
+const FormInput = ({ field, value, onChange }) => {
+  const { type } = field;
+
   if (type === 'longText') {
-    return <Input value={value} onChange={onChange} type="long-text" />
+    return <Input
+      value={value}
+      onChange={onChange}
+      type="long-text"
+    />
   }
   
   if (type === 'dateTime') {
-    return <DateTime value={value} onChange={onChange} />;
+    return <DateTime
+      value={value}
+      onChange={onChange}
+    />;
   }
 
-  return <Input value={value} onChange={onChange} type={type} />;
+  if (type === 'objectSelector') {
+    return <ObjectSelector
+      value={value}
+      getLabel={field.getLabel}
+      getValue={field.getValue}
+      collection={field.collection}
+      onChange={onChange}
+    />
+  }
+
+  return <Input
+    value={value}
+    onChange={onChange}
+    type={type}
+  />;
 };
 
 export default class extends Component {
@@ -23,9 +51,9 @@ export default class extends Component {
         <label>{field.label || field.key}</label>
         <span>
           <FormInput
-            type={field.type}
+            field={field}
             value={values && values[field.key] || ''}
-            onChange={v => onChange(field.key, v)}
+            onChange={v => onChange(field, v)}
           />
         </span>
       </div>)}

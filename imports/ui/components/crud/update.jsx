@@ -22,11 +22,20 @@ export default withRouter(withTracker(({
 }) => <div>
   <h3>Updating a {nameSingular}</h3>
 
-  <Form value={value} fields={formFields} onChange={(k, v) => {
-    collection.update(value._id, {
-      $set: { [k]: v }
-    });
-  }} />
+  <Form
+    value={value}
+    fields={formFields}
+    onChange={(field, v) => {
+      const { key, transform } = field;
+      if (transform) {
+        v = transform(v);
+      }
+
+      collection.update(value._id, {
+        $set: { [key]: v }
+      });
+    }}
+  />
 
   <button onClick={() => {
     collection.remove(value._id);
