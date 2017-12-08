@@ -21,9 +21,12 @@ export default class extends Component {
     const { value } = nextProps;
     const momentValue = createMomentValue(value);
     
-    this.setState({
-      inputString: dateTime.format(momentValue)
-    });
+    const inputStringMomentValue = parseMomentValue(this.state.inputString);
+    if (!inputStringMomentValue.isSame(momentValue)) {
+      this.setState({
+        inputString: dateTime.format(momentValue)
+      });
+    }
   }
 
   handleChange(event) {
