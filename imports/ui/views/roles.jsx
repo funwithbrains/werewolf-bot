@@ -18,6 +18,8 @@ export default () => <div>
       { key: 'description', type: 'longText' },
       { key: 'tags', type: 'text' }
     ]}
-    computeFormValue={formData => formData}
+    createInitialValue={() => {
+      return {};
+    }}
   />
 </div>;

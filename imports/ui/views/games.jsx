@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Games, Players } from '/imports/api/index';
+import { Games, Players, Setups } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
 export default () => <div>
@@ -16,6 +16,13 @@ export default () => <div>
       { key: 'name', type: 'text', label: 'Name' },
       { key: 'startDate', type: 'dateTime', label: 'Start Date' },
       {
+        key: 'setupId',
+        type: 'objectSelector',
+        label: 'Setup',
+        collection: Setups,
+        getLabel: v => v.name
+      },
+      {
         key: 'gameMasterId',
         type: 'objectSelector',
         label: 'Game Master',
@@ -30,6 +37,8 @@ export default () => <div>
         getLabel: v => v.name
       }
     ]}
-    computeFormValue={formData => formData}
+    createInitialValue={() => {
+      return {};
+    }}
   />
 </div>;

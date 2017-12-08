@@ -16,6 +16,8 @@ export default () => <div>
       { key: 'name', type: 'text', label: 'Name' },
       { key: 'description', type: 'longText', label: 'Description' }
     ]}
-    computeFormValue={formData => formData}
+    createInitialValue={() => {
+      return {};
+    }}
   />
 </div>;

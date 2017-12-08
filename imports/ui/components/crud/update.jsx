@@ -15,7 +15,7 @@ export default withRouter(withTracker(({
   value,
   crudProps: {
     collection,
-    formFields, computeFormValue,
+    formFields,
     nameSingular,
     basePath
   }

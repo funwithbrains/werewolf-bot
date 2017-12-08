@@ -58,14 +58,15 @@ export default class extends Component {
 
     return <div>
       {fields.map(field => <div key={field.key}>
-        <label>{field.label || field.key} </label>
-        <span>
-          <FormInput
-            field={field}
-            value={values && values[field.key] || ''}
-            onChange={v => onChange(field, v)}
-          />
-        </span>
+        <label>{field.label || field.key}
+          <div>
+            <FormInput
+              field={field}
+              value={values && values[field.key] || ''}
+              onChange={v => onChange(field, v)}
+            />
+          </div>
+        </label>
       </div>)}
     </div>;
   }

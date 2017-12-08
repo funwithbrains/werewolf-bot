@@ -7,10 +7,10 @@ export default withRouter(class extends Component {
 
     const {
       history,
-      crudProps: { collection, basePath }
+      crudProps: { collection, basePath, createInitialValue }
     } = props;
 
-    const newId = collection.insert({});
+    const newId = collection.insert(createInitialValue());
     history.replace(`${basePath}/update/${newId}`);
   }
   render() { return null; }
