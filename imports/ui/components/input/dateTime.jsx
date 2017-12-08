@@ -46,9 +46,11 @@ export default class extends Component {
   render() {
     const { value } = this.props;
     const momentValue = createMomentValue(value);
-    const isValid = momentValue.isValid();
 
     const { inputString } = this.state;
+    const inputStringMomentValue = parseMomentValue(inputString);
+    const isValid = inputStringMomentValue.isValid();
+    console.log(inputString, isValid);
     
     return <span>
       <input
