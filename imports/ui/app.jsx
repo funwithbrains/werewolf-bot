@@ -11,7 +11,7 @@ import {
   Home,
   Players,
   Roles,
-  Setup
+  Setups
 } from './views/index';
 
 export default () => <Router>
@@ -24,13 +24,13 @@ export default () => <Router>
       <li><Link to="/games">Games</Link></li>
       <li><Link to="/players">Players</Link></li>
       <li><Link to="/roles">Roles</Link></li>
-      <li><Link to="/setup">Setup</Link></li>
+      <li><Link to="/setups">Setups</Link></li>
     </ul>
 
     <Route exact path="/" component={Home}/>
     <Route path="/games" component={Games} />
     <Route path="/players" component={Players} />
     <Route path="/roles" component={Roles} />
-    <Route path="/setup" component={Setup} />
+    <Route path="/setups" component={Setups} />
   </div>
 </Router>;
