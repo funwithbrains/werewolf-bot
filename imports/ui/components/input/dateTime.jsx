@@ -50,7 +50,6 @@ export default class extends Component {
     const { inputString } = this.state;
     const inputStringMomentValue = parseMomentValue(inputString);
     const isValid = inputStringMomentValue.isValid();
-    console.log(inputString, isValid);
     
     return <span>
       <input
