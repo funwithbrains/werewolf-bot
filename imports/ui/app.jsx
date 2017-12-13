@@ -8,6 +8,7 @@ import {
 import { AccountUI } from './components/index';
 import {
   Games,
+  GameStatus,
   Home,
   Players,
   Roles,
@@ -29,6 +30,7 @@ export default () => <Router>
 
     <Route exact path="/" component={Home}/>
     <Route path="/games" component={Games} />
+    <Route path="/gameStatus/:id" component={GameStatus} />
     <Route path="/players" component={Players} />
     <Route path="/roles" component={Roles} />
     <Route path="/setups" component={Setups} />
