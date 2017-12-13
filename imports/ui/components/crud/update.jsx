@@ -2,7 +2,7 @@ import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom'
 
-import { Form } from '/imports/ui/components/index';
+import { Form, JsonEditor } from '/imports/ui/components/index';
 
 export default withRouter(withTracker(({
   match: { params: { id } }, crudProps: { collection }
@@ -36,6 +36,10 @@ export default withRouter(withTracker(({
       });
     }}
   />
+
+  <JsonEditor value={value} onChange={v => {
+    collection.update(value._id, v);
+  }} />
 
   <button onClick={() => {
     collection.remove(value._id);
