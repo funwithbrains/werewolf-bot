@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
-export default withTracker(({ collection }) => {
+export const ObjectSelector = withTracker(({ collection }) => {
   return {
     options: collection.find({}).fetch()
   };

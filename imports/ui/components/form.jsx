@@ -6,7 +6,7 @@ import {
   Input,
   ObjectMultiSelector,
   ObjectSelector
-} from '/imports/ui/components/input/index';
+} from './input/index';
 
 const FormInput = ({ field, value, onChange }) => {
   const { type } = field;
@@ -52,22 +52,20 @@ const FormInput = ({ field, value, onChange }) => {
   />;
 };
 
-export default class extends Component {
-  render() {
-    const { value: values, fields, onChange } = this.props;
-
-    return <div>
-      {fields.map(field => <div key={field.key}>
-        <label>{field.label || field.key}
-          <div>
-            <FormInput
-              field={field}
-              value={values && values[field.key] || ''}
-              onChange={v => onChange(field, v)}
-            />
-          </div>
-        </label>
-      </div>)}
-    </div>;
-  }
-};
+export const Form = ({
+  value: values,
+  fields,
+  onChange
+}) => <div>
+  {fields.map(field => <div key={field.key}>
+    <label>{field.label || field.key}
+      <div>
+        <FormInput
+          field={field}
+          value={values && values[field.key] || ''}
+          onChange={v => onChange(field, v)}
+        />
+      </div>
+    </label>
+  </div>)}
+</div>;

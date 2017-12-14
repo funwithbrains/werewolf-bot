@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import Collapsible from '/imports/ui/components/collapsible.jsx';
+import { Collapsible } from '/imports/ui/components/collapsible.jsx';
 
-export default withTracker(({ collection }) => {
+export const ObjectMultiSelect = withTracker(({ collection }) => {
   return {
     options: collection.find({}).fetch()
   };

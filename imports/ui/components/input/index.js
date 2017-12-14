@@ -1,11 +1,4 @@
-import DateTime from './dateTime.jsx';
-import Input from './input.jsx';
-import ObjectMultiSelector from './objectMultiSelector.jsx';
-import ObjectSelector from './objectSelector.jsx';
-
-export {
-  DateTime,
-  Input,
-  ObjectMultiSelector,
-  ObjectSelector
-};
+export * from './dateTime.jsx';
+export * from './input.jsx';
+export * from './objectMultiSelector.jsx';
+export * from './objectSelector.jsx';

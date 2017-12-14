@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default ({ value, type, onChange }) => {
+export const Input = ({ value, type, onChange }) => {
   const handleChange = e => onChange && onChange(e.target.value);
 
   if (type === 'long-text') {

@@ -5,7 +5,7 @@ import ListValues from './list.jsx';
 import CreateValue from './create.jsx';
 import UpdateValue from './update.jsx';
 
-export default (props) => {
+export const CRUD = (props) => {
   const { basePath } = props;
 
   return <div>

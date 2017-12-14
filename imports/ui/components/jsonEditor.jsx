@@ -6,7 +6,7 @@ import { Form } from '/imports/ui/components/index';
 
 const stringify = v => JSON.stringify(v, null, 2);
 
-export default class extends React.Component {
+export class JsonEditor extends React.Component {
   constructor(props) {
     super(props);
 

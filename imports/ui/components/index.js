@@ -1,15 +1,6 @@
-import AccountUI from './accountUI.jsx';
-import Collapsible from './collapsible.jsx';
-import CRUD from './crud/index.jsx';
-import Form from './form.jsx';
-import JsonEditor from './jsonEditor.jsx';
-import Table from './table.jsx';
-
-export {
-  AccountUI,
-  Collapsible,
-  CRUD,
-  Form,
-  JsonEditor,
-  Table
-};
+export * from './accountUI.jsx';
+export * from './collapsible.jsx';
+export * from './crud/index.jsx';
+export * from './form.jsx';
+export * from './jsonEditor.jsx';
+export * from './table.jsx';

@@ -5,7 +5,7 @@ import { moment, dateTime } from '/imports/utils/index';
 const parseMomentValue = string => string ? dateTime.parse(string) : moment();
 const createMomentValue = date => date ? moment(date) : moment();
 
-export default class extends Component {
+export class DateTime extends Component {
   constructor(props) {
     super(props);
 
