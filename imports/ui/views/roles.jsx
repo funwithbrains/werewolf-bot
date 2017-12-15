@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Roles } from '/imports/api/index';
+import { Roles as RolesCollection } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
-export default () => <div>
+export const Roles = () => <div>
   <CRUD
     basePath="/roles"
     nameSingular="Role"
     namePlural="Roles"
-    collection={Roles}
+    collection={RolesCollection}
     listColumns={[
       { label: 'Name', key: 'name', isLink: true },
       { label: 'Description', key: 'description' }

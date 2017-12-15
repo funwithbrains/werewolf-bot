@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { Games, Setups } from '/imports/api/index';
 
-export default withTracker(({ match: { params: { id } } }) => {
+export const GameStatus = withTracker(({ match: { params: { id } } }) => {
   const game = Games.findOne(id);
   const setup = Setups.findOne(game && game.setupId);
   return {

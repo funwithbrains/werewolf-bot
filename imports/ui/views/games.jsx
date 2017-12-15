@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Games, Players, Setups } from '/imports/api/index';
+import { Games as GamesCollection, Players, Setups } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
-export default () => <div>
+export const Games = () => <div>
   <CRUD
     basePath="/games"
     nameSingular="Game"
     namePlural="Games"
-    collection={Games}
+    collection={GamesCollection}
     listColumns={[
       { label: 'Name', key: 'name', isLink: true }
     ]}
@@ -27,7 +27,7 @@ export default () => <div>
         type: 'objectSelector',
         label: 'Game Master',
         collection: Meteor.users,
-        getLabel: v => v.emails[0].address
+        getLabel: v => v && v.emails && v.emails[0] && v.emails[0].address
       },
       {
         key: 'playerIds',
@@ -38,7 +38,9 @@ export default () => <div>
       }
     ]}
     createInitialValue={() => {
-      return {};
+      return {
+        phases: []
+      };
     }}
   />
 </div>;

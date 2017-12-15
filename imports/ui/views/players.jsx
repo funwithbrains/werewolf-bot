@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-import { Players } from '/imports/api/index';
+import { Players as PlayersCollection } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
-export default () => <div>
+export const Players = () => <div>
   <CRUD
     basePath="/players"
     nameSingular="Player"
     namePlural="Players"
-    collection={Players}
+    collection={PlayersCollection}
     listColumns={[
       { label: 'Name', key: 'name', isLink: true }
     ]}
