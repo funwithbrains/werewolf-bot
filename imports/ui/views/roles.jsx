@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Roles as RolesCollection } from '/imports/api/index';
+import { Role } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
 export const Roles = () => <div>
@@ -8,7 +8,7 @@ export const Roles = () => <div>
     basePath="/roles"
     nameSingular="Role"
     namePlural="Roles"
-    collection={RolesCollection}
+    ormClass={Role}
     listColumns={[
       { label: 'Name', key: 'name', isLink: true },
       { label: 'Description', key: 'description' }

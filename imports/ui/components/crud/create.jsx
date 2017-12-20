@@ -1,17 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom'
 
-export default withRouter(class extends Component {
-  constructor (props) {
-    super(props);
+import { Editor } from './editor.jsx';
 
+export default withRouter(class extends React.Component {
+  render() {
     const {
       history,
-      crudProps: { collection, basePath, createInitialValue }
-    } = props;
+      crudProps
+    } = this.props;
+    const {
+      nameSingular,
+      ormClass,
+      basePath
+    } = crudProps;
+    const value = new ormClass();
 
-    const newId = collection.insert(createInitialValue());
-    history.replace(`${basePath}/update/${newId}`);
+    return <div>
+      <h3>Creating a {nameSingular}</h3>
+
+      <Editor value={value} crudProps={crudProps} onSave={() => {
+        value.crudSave((error, id) => {
+          history.replace(`${basePath}/update/${id}`);
+        });
+      }} />
+    </div>;
   }
-  render() { return null; }
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Setups as SetupsCollection } from '/imports/api/index';
+import { Setup } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
 export const Setups = () => <div>
@@ -8,7 +8,7 @@ export const Setups = () => <div>
     basePath="/setups"
     nameSingular="Setup"
     namePlural="Setups"
-    collection={SetupsCollection}
+    ormClass={Setup}
     listColumns={[
       { label: 'Name', key: 'name', isLink: true }
     ]}

@@ -5,7 +5,7 @@ import { Table } from '/imports/ui/components/index';
 import { Roles } from '/imports/api/index';
 
 export default ({
-  crudProps: { basePath, collection, listColumns, nameSingular, namePlural }
+  crudProps: { basePath, ormClass, listColumns, nameSingular, namePlural }
 }) => <div>
   <h3>Viewing the {namePlural}</h3>
 
@@ -13,7 +13,7 @@ export default ({
 
   <Table
     link={`${basePath}/update/:id`}
-    collection={collection}
+    collection={ormClass.getCollection()}
     query={{}}
     columns={listColumns}
   />

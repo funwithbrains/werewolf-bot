@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Players as PlayersCollection } from '/imports/api/index';
+import { Player } from '/imports/api/index';
 import { CRUD } from '/imports/ui/components/index';
 
 export const Players = () => <div>
@@ -8,7 +8,7 @@ export const Players = () => <div>
     basePath="/players"
     nameSingular="Player"
     namePlural="Players"
-    collection={PlayersCollection}
+    ormClass={Player}
     listColumns={[
       { label: 'Name', key: 'name', isLink: true }
     ]}

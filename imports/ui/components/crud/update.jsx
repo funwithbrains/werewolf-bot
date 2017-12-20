@@ -2,47 +2,47 @@ import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom'
 
-import { Form, JsonEditor } from '/imports/ui/components/index';
+import { Editor } from './editor.jsx';
 
 export default withRouter(withTracker(({
-  match: { params: { id } }, crudProps: { collection }
+  match: { params: { id } }, crudProps: { ormClass }
 }) => {
-  return {
-    value: collection.findOne(id)
+  return { // TODO Do not replace value when server pushes. May require stateful Update component.
+    value: ormClass.findOne(id)
   };
-})(({
-  history,
-  value,
-  crudProps: {
-    collection,
-    formFields,
-    nameSingular,
-    basePath
+})(class extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { value: props.value };
   }
-}) => <div>
-  <h3>Updating a {nameSingular}</h3>
 
-  <Form
-    value={value}
-    fields={formFields}
-    onChange={(field, v) => {
-      const { key, transform } = field;
-      if (transform) {
-        v = transform(v);
-      }
+  componentWillReceiveProps(nextProps) {
+    const { value } = nextProps;
+    if (!value || this.state.value) { return; }
+    
+    this.setState({ value });
+  }
 
-      collection.update(value._id, {
-        $set: { [key]: v }
-      });
-    }}
-  />
+  render() {
+    const {
+      history,
+      crudProps
+    } = this.props;
+    const { nameSingular, basePath } = crudProps;
+    const { value } = this.state;
 
-  <JsonEditor value={value} onChange={v => {
-    collection.update(value._id, v);
-  }} />
+    return <div>
+      <h3>Updating a {nameSingular}</h3>
 
-  <button onClick={() => {
-    collection.remove(value._id);
-    history.replace(basePath);
-  }}>Delete this {nameSingular}</button>
-</div>));
+      <Editor value={value} onSave={(value) => {
+        value.crudSave();
+      }} crudProps={crudProps} />
+
+      <button onClick={() => {
+        value.crudRemove();
+        history.replace(basePath);
+      }}>Delete this {nameSingular}</button>
+    </div>;
+  }
+}));
