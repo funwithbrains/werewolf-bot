@@ -35,7 +35,7 @@ export default withRouter(withTracker(({
     return <div>
       <h3>Updating a {nameSingular}</h3>
 
-      <Editor value={value} onSave={(value) => {
+      <Editor value={value} onSave={() => {
         value.crudSave();
       }} crudProps={crudProps} />
 
