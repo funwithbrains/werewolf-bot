@@ -18,7 +18,14 @@ export const GamePhase = Class.create({
   name: 'GamePhase',
   fields: {
     type: String,
-    votes: [Vote]
+    survivorIds: {
+      type: [String],
+      default: []
+    },
+    votes: {
+      type: [Vote],
+      optional: true
+    }
   }
 });
 
@@ -57,6 +64,26 @@ export const Game = Class.create({
   },
   behaviors: {
     crud: {}
+  },
+  helpers: {
+    currentPhase() {
+      const { phases } = this;
+      return phases[phases.length - 1] || null;
+    }
+  },
+  meteorMethods: {
+    start() {
+      this.phases = [];// TEMP
+      this.startDate = new Date();
+
+      this.phases.push(Object.assign(new GamePhase(), {
+        type: 'day',
+        survivorIds: this.playerIds.slice(),
+        votes: []
+      }));
+
+      this.save();
+    }
   }
 });
 
