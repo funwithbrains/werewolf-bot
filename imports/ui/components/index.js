@@ -4,3 +4,5 @@ export * from './crud/index.jsx';
 export * from './form.jsx';
 export * from './jsonEditor.jsx';
 export * from './table.jsx';
+
+export * from './input';

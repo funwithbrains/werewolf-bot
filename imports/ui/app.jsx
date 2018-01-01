@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom';
 
-import { AccountUI } from './components/index';
+import { AccountUI, PlayerSelector } from './components/index';
 import {
   Games,
   GameStatus,
@@ -18,6 +18,8 @@ import {
 export default () => <Router>
   <div className="container">
     <AccountUI />
+
+    <PlayerSelector />
 
     <h1><Link to="/">werewolf-bot</Link></h1>
 
